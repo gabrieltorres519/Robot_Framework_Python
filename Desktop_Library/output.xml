@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.8.10 on linux)" generated="20220705 21:53:55.303" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/Desktop_Library/tasks.robot">
+<test id="s1-t1" name="Example of RPA Desktop Library">
+<kw name="Open Stocks Application On MAC" library="desktop">
+<doc>please install the rpaframework-recognition package for image/ocr</doc>
+<kw name="Press Keys">
+<arg>cmd</arg>
+<arg>space</arg>
+<msg timestamp="20220705 21:53:55.348" level="FAIL">No keyword with name 'Press Keys' found.</msg>
+<status status="FAIL" starttime="20220705 21:53:55.348" endtime="20220705 21:53:55.359"/>
+</kw>
+<kw name="Type Text">
+<arg>Stocks</arg>
+<status status="NOT RUN" starttime="20220705 21:53:55.361" endtime="20220705 21:53:55.362"/>
+</kw>
+<kw name="Wait For Element">
+<var>${elem} =</var>
+<arg>image:Images/Stocks.png</arg>
+<status status="NOT RUN" starttime="20220705 21:53:55.363" endtime="20220705 21:53:55.363"/>
+</kw>
+<kw name="Click">
+<arg>${elem}</arg>
+<arg>double click</arg>
+<status status="NOT RUN" starttime="20220705 21:53:55.365" endtime="20220705 21:53:55.365"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait For Element</arg>
+<arg>image:Images/ContinueButton.png</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="NOT RUN" starttime="20220705 21:53:55.365" endtime="20220705 21:53:55.365"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}</arg>
+<arg>Click</arg>
+<arg>image:Images/ContinueButton.png</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" starttime="20220705 21:53:55.366" endtime="20220705 21:53:55.366"/>
+</kw>
+<status status="FAIL" starttime="20220705 21:53:55.345" endtime="20220705 21:53:55.366"/>
+</kw>
+<status status="FAIL" starttime="20220705 21:53:55.345" endtime="20220705 21:53:55.367">No keyword with name 'Press Keys' found.</status>
+</test>
+<doc>Template robot main suite.</doc>
+<status status="FAIL" starttime="20220705 21:53:55.307" endtime="20220705 21:53:55.367"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220705 21:53:55.333" level="ERROR">Error in file '/home/gabriel/Documentos/RPA/Desktop_Library/tasks.robot' on line 3: Importing library 'RPA.Desktop' failed: Module 'RPA' does not contain 'Desktop'.</msg>
+<msg timestamp="20220705 21:53:55.343" level="ERROR">Error in file '/home/gabriel/Documentos/RPA/Desktop_Library/KeywordLibrary/desktop.robot' on line 3: Importing library 'RPA.Desktop' failed: Module 'RPA' does not contain 'Desktop'.</msg>
+</errors>
+</robot>

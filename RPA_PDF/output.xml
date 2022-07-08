@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on linux)" generated="20220706 22:23:31.600" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/RPA_PDF/tasks.robot">
+<test id="s1-t1" name="Example of PDF Library Use Case Two" line="16">
+<kw name="Save URL As Image In PDF" library="pdf">
+<arg>https://cloud.robocorp.com</arg>
+<kw name="Create A New File Name" library="pdf">
+<var>${dest_file}</var>
+<kw name="Get Time" library="BuiltIn">
+<var>${time_stamp}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20220706 22:23:32.361" level="INFO">${time_stamp} = 1657164212</msg>
+<status status="PASS" starttime="20220706 22:23:32.361" endtime="20220706 22:23:32.367"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${DEST_FILE_NAME}</var>
+<arg>SEPARATOR=/</arg>
+<arg>${DEST_FOLDER}</arg>
+<arg>${time_stamp}.pdf</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20220706 22:23:32.367" level="INFO">${DEST_FILE_NAME} = /home/gabriel/Documentos/RPA/RPA_PDF/DataSets/pdfout/1657164212.pdf</msg>
+<status status="PASS" starttime="20220706 22:23:32.367" endtime="20220706 22:23:32.367"/>
+</kw>
+<msg timestamp="20220706 22:23:32.368" level="INFO">${dest_file} = /home/gabriel/Documentos/RPA/RPA_PDF/DataSets/pdfout/1657164212.pdf</msg>
+<status status="PASS" starttime="20220706 22:23:32.361" endtime="20220706 22:23:32.368"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${HTML}</var>
+<arg>${HTML_CONTENT}</arg>
+<arg>URL_TO_UPADTE</arg>
+<arg>${URL}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220706 22:23:32.368" level="INFO">${HTML} = &lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Page URL&lt;/h1&gt;&lt;p&gt;https://cloud.robocorp.com&lt;/p&gt;&lt;h2&gt;ScreenShot of page&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</msg>
+<status status="PASS" starttime="20220706 22:23:32.368" endtime="20220706 22:23:32.368"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${URL}</arg>
+<arg>browser=Chrome</arg>
+<arg>executable_path=${DRIVER_PATH}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220706 22:23:32.369" level="INFO">Opening browser 'Chrome' to base url 'https://cloud.robocorp.com'.</msg>
+<status status="PASS" starttime="20220706 22:23:32.369" endtime="20220706 22:23:35.770"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220706 22:23:38.771" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220706 22:23:35.771" endtime="20220706 22:23:38.772"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${HTML}</arg>
+<arg>${dest_file}</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20220706 22:23:38.775" level="INFO">Writing output to file /home/gabriel/Documentos/RPA/RPA_PDF/DataSets/pdfout/1657164212.pdf</msg>
+<status status="PASS" starttime="20220706 22:23:38.773" endtime="20220706 22:23:38.895"/>
+</kw>
+<kw name="Capture Page Screenshot" library="RPA.Browser.Selenium">
+<var>${path}</var>
+<arg>temp.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220706 22:23:40.711" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="temp.png"&gt;&lt;img src="temp.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220706 22:23:40.711" level="INFO">${path} = /home/gabriel/Documentos/RPA/RPA_PDF/temp.png</msg>
+<status status="PASS" starttime="20220706 22:23:38.895" endtime="20220706 22:23:40.711"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${path}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 22:23:40.712" level="INFO">/home/gabriel/Documentos/RPA/RPA_PDF/temp.png</msg>
+<status status="PASS" starttime="20220706 22:23:40.712" endtime="20220706 22:23:40.712"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${files}</var>
+<arg>${path}${/}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220706 22:23:40.713" level="INFO">${files} = ['/home/gabriel/Documentos/RPA/RPA_PDF/temp.png/']</msg>
+<status status="PASS" starttime="20220706 22:23:40.712" endtime="20220706 22:23:40.713"/>
+</kw>
+<kw name="Add Files To Pdf" library="RPA.PDF">
+<arg>${files}</arg>
+<arg>${dest_file}</arg>
+<doc>Add images and/or pdfs to new PDF document</doc>
+<msg timestamp="20220706 22:23:40.714" level="INFO">File /home/gabriel/Documentos/RPA/RPA_PDF/temp.png type: png</msg>
+<msg timestamp="20220706 22:23:40.714" level="INFO">Image parameters: {}</msg>
+<status status="PASS" starttime="20220706 22:23:40.713" endtime="20220706 22:23:40.864"/>
+</kw>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220706 22:23:40.864" endtime="20220706 22:23:40.924"/>
+</kw>
+<status status="PASS" starttime="20220706 22:23:32.360" endtime="20220706 22:23:40.924"/>
+</kw>
+<kw name="Save URL As Image In PDF" library="pdf">
+<arg>https://robocorp.com/docs/</arg>
+<kw name="Create A New File Name" library="pdf">
+<var>${dest_file}</var>
+<kw name="Get Time" library="BuiltIn">
+<var>${time_stamp}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<msg timestamp="20220706 22:23:40.926" level="INFO">${time_stamp} = 1657164220</msg>
+<status status="PASS" starttime="20220706 22:23:40.925" endtime="20220706 22:23:40.926"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${DEST_FILE_NAME}</var>
+<arg>SEPARATOR=/</arg>
+<arg>${DEST_FOLDER}</arg>
+<arg>${time_stamp}.pdf</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20220706 22:23:40.927" level="INFO">${DEST_FILE_NAME} = /home/gabriel/Documentos/RPA/RPA_PDF/DataSets/pdfout/1657164220.pdf</msg>
+<status status="PASS" starttime="20220706 22:23:40.926" endtime="20220706 22:23:40.927"/>
+</kw>
+<msg timestamp="20220706 22:23:40.927" level="INFO">${dest_file} = /home/gabriel/Documentos/RPA/RPA_PDF/DataSets/pdfout/1657164220.pdf</msg>
+<status status="PASS" starttime="20220706 22:23:40.925" endtime="20220706 22:23:40.927"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${HTML}</var>
+<arg>${HTML_CONTENT}</arg>
+<arg>URL_TO_UPADTE</arg>
+<arg>${URL}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20220706 22:23:40.928" level="INFO">${HTML} = &lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Page URL&lt;/h1&gt;&lt;p&gt;https://robocorp.com/docs/&lt;/p&gt;&lt;h2&gt;ScreenShot of page&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</msg>
+<status status="PASS" starttime="20220706 22:23:40.927" endtime="20220706 22:23:40.928"/>
+</kw>
+<kw name="Open Browser" library="RPA.Browser.Selenium">
+<arg>${URL}</arg>
+<arg>browser=Chrome</arg>
+<arg>executable_path=${DRIVER_PATH}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220706 22:23:40.929" level="INFO">Opening browser 'Chrome' to base url 'https://robocorp.com/docs/'.</msg>
+<status status="PASS" starttime="20220706 22:23:40.928" endtime="20220706 22:23:45.340"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220706 22:23:48.342" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220706 22:23:45.341" endtime="20220706 22:23:48.343"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${HTML}</arg>
+<arg>${dest_file}</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20220706 22:23:48.345" level="INFO">Writing output to file /home/gabriel/Documentos/RPA/RPA_PDF/DataSets/pdfout/1657164220.pdf</msg>
+<status status="PASS" starttime="20220706 22:23:48.343" endtime="20220706 22:23:48.440"/>
+</kw>
+<kw name="Capture Page Screenshot" library="RPA.Browser.Selenium">
+<var>${path}</var>
+<arg>temp.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220706 22:23:48.518" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="temp.png"&gt;&lt;img src="temp.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220706 22:23:48.518" level="INFO">${path} = /home/gabriel/Documentos/RPA/RPA_PDF/temp.png</msg>
+<status status="PASS" starttime="20220706 22:23:48.440" endtime="20220706 22:23:48.518"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${path}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 22:23:48.519" level="INFO">/home/gabriel/Documentos/RPA/RPA_PDF/temp.png</msg>
+<status status="PASS" starttime="20220706 22:23:48.518" endtime="20220706 22:23:48.519"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${files}</var>
+<arg>${path}${/}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220706 22:23:48.519" level="INFO">${files} = ['/home/gabriel/Documentos/RPA/RPA_PDF/temp.png/']</msg>
+<status status="PASS" starttime="20220706 22:23:48.519" endtime="20220706 22:23:48.519"/>
+</kw>
+<kw name="Add Files To Pdf" library="RPA.PDF">
+<arg>${files}</arg>
+<arg>${dest_file}</arg>
+<doc>Add images and/or pdfs to new PDF document</doc>
+<msg timestamp="20220706 22:23:48.520" level="INFO">File /home/gabriel/Documentos/RPA/RPA_PDF/temp.png type: png</msg>
+<msg timestamp="20220706 22:23:48.521" level="INFO">Image parameters: {}</msg>
+<status status="PASS" starttime="20220706 22:23:48.520" endtime="20220706 22:23:48.611"/>
+</kw>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220706 22:23:48.611" endtime="20220706 22:23:48.672"/>
+</kw>
+<status status="PASS" starttime="20220706 22:23:40.925" endtime="20220706 22:23:48.673"/>
+</kw>
+<status status="PASS" starttime="20220706 22:23:32.358" endtime="20220706 22:23:48.674"/>
+</test>
+<doc>RPA PDF Related Keywords Example</doc>
+<status status="PASS" starttime="20220706 22:23:31.604" endtime="20220706 22:23:48.676"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

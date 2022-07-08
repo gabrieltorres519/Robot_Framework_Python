@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on linux)" generated="20220705 19:35:41.068" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/Robocorp/tasks.robot">
+<test id="s1-t1" name="Iterate WorkSheets Example" line="24">
+<kw name="Iterate WorkSheets From Workbook" library="excel">
+<arg>./DataSets/sampledatainsurance.xlsx</arg>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${EXCEL_FILE}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 19:35:41.630" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x7fa04bc202d0&gt;</msg>
+<status status="PASS" starttime="20220705 19:35:41.481" endtime="20220705 19:35:41.637"/>
+</kw>
+<kw name="List Worksheets" library="RPA.Excel.Files">
+<var>@{work_sheets}</var>
+<doc>List all names of worksheets in the given workbook.</doc>
+<msg timestamp="20220705 19:35:41.638" level="INFO">@{work_sheets} = [ Instructions | PolicyData | MyLinks ]</msg>
+<status status="PASS" starttime="20220705 19:35:41.637" endtime="20220705 19:35:41.638"/>
+</kw>
+<for flavor="IN">
+<var>${work_sheet}</var>
+<value>@{work_sheets}</value>
+<iter>
+<var name="${work_sheet}">Instructions</var>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${wsheet_data}</var>
+<arg>${work_sheet}</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220705 19:35:41.639" level="INFO">${wsheet_data} = [{'A': None, 'B': None, 'C': None}, {'A': None, 'B': None, 'C': None}, {'A': None, 'B': None, 'C': None}, {'A': None, 'B': None, 'C': None}, {'A': None, 'B': None, 'C': 'Downloaded From'}, {'A': None,...</msg>
+<status status="PASS" starttime="20220705 19:35:41.638" endtime="20220705 19:35:41.639"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${wsheet_data}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220705 19:35:41.640" level="INFO">Length is 17</msg>
+<msg timestamp="20220705 19:35:41.640" level="INFO">${rows} = 17</msg>
+<status status="PASS" starttime="20220705 19:35:41.639" endtime="20220705 19:35:41.640"/>
+</kw>
+<kw name="Find Empty Row" library="RPA.Excel.Files">
+<var>${emp_row}</var>
+<arg>${work_sheet}</arg>
+<doc>Find the first empty row after existing content,
+and return the row number.</doc>
+<msg timestamp="20220705 19:35:41.640" level="INFO">${emp_row} = 18</msg>
+<status status="PASS" starttime="20220705 19:35:41.640" endtime="20220705 19:35:41.640"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Worksheet '${work_sheet}' conatin ${rows} rows with first empty row at ${emp_row}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220705 19:35:41.641" level="INFO">Worksheet 'Instructions' conatin 17 rows with first empty row at 18</msg>
+<status status="PASS" starttime="20220705 19:35:41.640" endtime="20220705 19:35:41.641"/>
+</kw>
+<status status="PASS" starttime="20220705 19:35:41.638" endtime="20220705 19:35:41.641"/>
+</iter>
+<iter>
+<var name="${work_sheet}">PolicyData</var>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${wsheet_data}</var>
+<arg>${work_sheet}</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220705 19:35:41.650" level="INFO">${wsheet_data} = [{'A': 'Policy', 'B': 'Expiry', 'C': 'Location', 'D': 'State', 'E': 'Region', 'F': 'InsuredValue', 'G': 'Construction', 'H': 'BusinessType', 'I': 'Earthquake', 'J': 'Flood'}, {'A': '100242', 'B': date...</msg>
+<status status="PASS" starttime="20220705 19:35:41.641" endtime="20220705 19:35:41.651"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${wsheet_data}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220705 19:35:41.651" level="INFO">Length is 501</msg>
+<msg timestamp="20220705 19:35:41.652" level="INFO">${rows} = 501</msg>
+<status status="PASS" starttime="20220705 19:35:41.651" endtime="20220705 19:35:41.652"/>
+</kw>
+<kw name="Find Empty Row" library="RPA.Excel.Files">
+<var>${emp_row}</var>
+<arg>${work_sheet}</arg>
+<doc>Find the first empty row after existing content,
+and return the row number.</doc>
+<msg timestamp="20220705 19:35:41.654" level="INFO">${emp_row} = 502</msg>
+<status status="PASS" starttime="20220705 19:35:41.652" endtime="20220705 19:35:41.654"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Worksheet '${work_sheet}' conatin ${rows} rows with first empty row at ${emp_row}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220705 19:35:41.654" level="INFO">Worksheet 'PolicyData' conatin 501 rows with first empty row at 502</msg>
+<status status="PASS" starttime="20220705 19:35:41.654" endtime="20220705 19:35:41.655"/>
+</kw>
+<status status="PASS" starttime="20220705 19:35:41.641" endtime="20220705 19:35:41.655"/>
+</iter>
+<iter>
+<var name="${work_sheet}">MyLinks</var>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${wsheet_data}</var>
+<arg>${work_sheet}</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20220705 19:35:41.656" level="INFO">${wsheet_data} = [{'A': None, 'B': None, 'C': None}, {'A': None, 'B': 'Contextures Products', 'C': None}, {'A': None, 'B': 'Pivot Power Premium Add-in', 'C': 'Time-saving tools for pivot table power users'}, {'A': Non...</msg>
+<status status="PASS" starttime="20220705 19:35:41.655" endtime="20220705 19:35:41.656"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${rows}</var>
+<arg>${wsheet_data}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220705 19:35:41.656" level="INFO">Length is 16</msg>
+<msg timestamp="20220705 19:35:41.656" level="INFO">${rows} = 16</msg>
+<status status="PASS" starttime="20220705 19:35:41.656" endtime="20220705 19:35:41.656"/>
+</kw>
+<kw name="Find Empty Row" library="RPA.Excel.Files">
+<var>${emp_row}</var>
+<arg>${work_sheet}</arg>
+<doc>Find the first empty row after existing content,
+and return the row number.</doc>
+<msg timestamp="20220705 19:35:41.657" level="INFO">${emp_row} = 17</msg>
+<status status="PASS" starttime="20220705 19:35:41.656" endtime="20220705 19:35:41.657"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Worksheet '${work_sheet}' conatin ${rows} rows with first empty row at ${emp_row}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220705 19:35:41.657" level="INFO">Worksheet 'MyLinks' conatin 16 rows with first empty row at 17</msg>
+<status status="PASS" starttime="20220705 19:35:41.657" endtime="20220705 19:35:41.657"/>
+</kw>
+<status status="PASS" starttime="20220705 19:35:41.655" endtime="20220705 19:35:41.657"/>
+</iter>
+<status status="PASS" starttime="20220705 19:35:41.638" endtime="20220705 19:35:41.658"/>
+</for>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20220705 19:35:41.658" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x7fa04bc202d0&gt;</msg>
+<status status="PASS" starttime="20220705 19:35:41.658" endtime="20220705 19:35:41.658"/>
+</kw>
+<status status="PASS" starttime="20220705 19:35:41.480" endtime="20220705 19:35:41.658"/>
+</kw>
+<status status="PASS" starttime="20220705 19:35:41.479" endtime="20220705 19:35:41.659"/>
+</test>
+<doc>Excel File Related Keyword Examples</doc>
+<status status="PASS" starttime="20220705 19:35:41.072" endtime="20220705 19:35:41.660"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

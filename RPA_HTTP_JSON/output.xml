@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on linux)" generated="20220707 14:27:42.383" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/RPA_HTTP_JSON/tasks.robot">
+<test id="s1-t1" name="Example of HTTP Library Use Cases" line="43">
+<kw name="Create Session" library="RPA.HTTP">
+<arg>reqres</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220707 14:27:42.953" level="INFO">Creating Session using : alias=reqres, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220707 14:27:42.946" endtime="20220707 14:27:42.958"/>
+</kw>
+<kw name="Convert String to JSON" library="RPA.JSON">
+<var>${data}</var>
+<arg>{"name":"john", "job":"software engineer"}</arg>
+<doc>Convert a string to a JSON serializable object and return it.</doc>
+<msg timestamp="20220707 14:27:42.962" level="INFO">${data} = {'name': 'john', 'job': 'software engineer'}</msg>
+<status status="PASS" starttime="20220707 14:27:42.960" endtime="20220707 14:27:42.962"/>
+</kw>
+<kw name="Execute POST With Json">
+<var>&amp;{response}</var>
+<arg>reqres</arg>
+<arg>${createUser}</arg>
+<arg>${data}</arg>
+<arg>201</arg>
+<kw name="Post Request" library="RPA.HTTP">
+<var>${resp}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>json=${data}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20220707 14:27:42.969" level="WARN">Keyword 'RPA.HTTP.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220707 14:27:43.476" level="INFO">/home/gabriel/.robocorp/holotree/c777e35_b1f3c24_691db988/lib/python3.7/site-packages/urllib3/connectionpool.py:1050: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20220707 14:27:43.478" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220707 14:27:42.968" endtime="20220707 14:27:43.478"/>
+</kw>
+<kw name="Status Should Be" library="RPA.HTTP">
+<arg>${code}</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:27:43.479" endtime="20220707 14:27:43.481"/>
+</kw>
+<msg timestamp="20220707 14:27:43.485" level="INFO">&amp;{response} = { name=john | job=software engineer | id=60 | createdAt=2022-07-07T19:27:43.373Z }</msg>
+<status status="PASS" starttime="20220707 14:27:42.963" endtime="20220707 14:27:43.485"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220707 14:27:43.488" level="INFO">{'name': 'john', 'job': 'software engineer', 'id': '60', 'createdAt': '2022-07-07T19:27:43.373Z'}</msg>
+<status status="PASS" starttime="20220707 14:27:43.487" endtime="20220707 14:27:43.488"/>
+</kw>
+<kw name="Get value from JSON" library="RPA.JSON">
+<var>${id}</var>
+<arg>${response}</arg>
+<arg>$.id</arg>
+<doc>Get a single value from a JSON serializable object that matches the given expression.</doc>
+<msg timestamp="20220707 14:27:43.490" level="INFO">Get value from JSON with expression: '$.id'</msg>
+<msg timestamp="20220707 14:27:43.558" level="INFO">${id} = 60</msg>
+<status status="PASS" starttime="20220707 14:27:43.489" endtime="20220707 14:27:43.558"/>
+</kw>
+<kw name="Convert String to JSON" library="RPA.JSON">
+<var>${data}</var>
+<arg>{"name":"john", "job":"devops engineer"}</arg>
+<doc>Convert a string to a JSON serializable object and return it.</doc>
+<msg timestamp="20220707 14:27:43.560" level="INFO">${data} = {'name': 'john', 'job': 'devops engineer'}</msg>
+<status status="PASS" starttime="20220707 14:27:43.559" endtime="20220707 14:27:43.560"/>
+</kw>
+<kw name="Execute PUT With Json">
+<var>&amp;{response}</var>
+<arg>reqres</arg>
+<arg>${createUser}${/}${id}</arg>
+<arg>${data}</arg>
+<kw name="Put Request" library="RPA.HTTP">
+<var>${resp}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>json=${data}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<msg timestamp="20220707 14:27:43.564" level="WARN">Keyword 'RPA.HTTP.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220707 14:27:43.953" level="INFO">/home/gabriel/.robocorp/holotree/c777e35_b1f3c24_691db988/lib/python3.7/site-packages/urllib3/connectionpool.py:1050: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20220707 14:27:43.955" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220707 14:27:43.564" endtime="20220707 14:27:43.955"/>
+</kw>
+<kw name="Status Should Be" library="RPA.HTTP">
+<arg>${code}</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:27:43.956" endtime="20220707 14:27:43.957"/>
+</kw>
+<msg timestamp="20220707 14:27:43.961" level="INFO">&amp;{response} = { name=john | job=devops engineer | updatedAt=2022-07-07T19:27:43.843Z }</msg>
+<status status="PASS" starttime="20220707 14:27:43.561" endtime="20220707 14:27:43.961"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220707 14:27:43.963" level="INFO">{'name': 'john', 'job': 'devops engineer', 'updatedAt': '2022-07-07T19:27:43.843Z'}</msg>
+<status status="PASS" starttime="20220707 14:27:43.962" endtime="20220707 14:27:43.963"/>
+</kw>
+<kw name="Execute DELETE">
+<arg>reqres</arg>
+<arg>${createUser}${/}${id}</arg>
+<kw name="Delete Request" library="RPA.HTTP">
+<var>${resp}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
+<msg timestamp="20220707 14:27:43.968" level="WARN">Keyword 'RPA.HTTP.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg timestamp="20220707 14:27:44.332" level="INFO">/home/gabriel/.robocorp/holotree/c777e35_b1f3c24_691db988/lib/python3.7/site-packages/urllib3/connectionpool.py:1050: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20220707 14:27:44.334" level="INFO">${resp} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20220707 14:27:43.967" endtime="20220707 14:27:44.335"/>
+</kw>
+<kw name="Status Should Be" library="RPA.HTTP">
+<arg>${code}</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220707 14:27:44.336" endtime="20220707 14:27:44.338"/>
+</kw>
+<status status="PASS" starttime="20220707 14:27:43.964" endtime="20220707 14:27:44.339"/>
+</kw>
+<status status="PASS" starttime="20220707 14:27:42.940" endtime="20220707 14:27:44.341"/>
+</test>
+<doc>RPA HTTP Related Keywords Example</doc>
+<status status="PASS" starttime="20220707 14:27:42.392" endtime="20220707 14:27:44.344"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220707 14:27:42.969" level="WARN">Keyword 'RPA.HTTP.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220707 14:27:43.564" level="WARN">Keyword 'RPA.HTTP.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20220707 14:27:43.968" level="WARN">Keyword 'RPA.HTTP.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+</errors>
+</robot>

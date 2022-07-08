@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on linux)" generated="20220705 20:21:32.909" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/Excel_GUI_Mode/tasks.robot">
+<test id="s1-t1" name="GUI Based Excel Application Task1" line="7">
+<kw name="Add New WorkSheet Into WorkBook" library="excel-app">
+<arg>&lt;Give_Complete_Path&gt;/TestXLSFile.xls</arg>
+<arg>policydata</arg>
+<kw name="Open Application" library="RPA.Excel.Application">
+<doc>Open the Excel application.</doc>
+<msg timestamp="20220705 20:21:32.977" level="FAIL">NameError: name 'pywintypes' is not defined</msg>
+<status status="FAIL" starttime="20220705 20:21:32.976" endtime="20220705 20:21:32.990"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Application">
+<arg>${EXCEL_FILE}</arg>
+<doc>Open Excel by filename</doc>
+<status status="NOT RUN" starttime="20220705 20:21:32.990" endtime="20220705 20:21:32.990"/>
+</kw>
+<kw name="Add New Sheet" library="RPA.Excel.Application">
+<arg>${SHEET_NAME}</arg>
+<arg>create_workbook=False</arg>
+<doc>Add new worksheet to workbook. Workbook is created by default if
+it does not exist.</doc>
+<status status="NOT RUN" starttime="20220705 20:21:32.990" endtime="20220705 20:21:32.991"/>
+</kw>
+<kw name="Save Excel" library="RPA.Excel.Application">
+<doc>Saves Excel file</doc>
+<status status="NOT RUN" starttime="20220705 20:21:32.991" endtime="20220705 20:21:32.991"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220705 20:21:32.991" endtime="20220705 20:21:32.991"/>
+</kw>
+<kw name="Quit Application" library="RPA.Excel.Application">
+<doc>Quit the application.</doc>
+<status status="NOT RUN" starttime="20220705 20:21:32.991" endtime="20220705 20:21:32.991"/>
+</kw>
+<status status="FAIL" starttime="20220705 20:21:32.975" endtime="20220705 20:21:32.992"/>
+</kw>
+<status status="FAIL" starttime="20220705 20:21:32.974" endtime="20220705 20:21:32.993">NameError: name 'pywintypes' is not defined</status>
+</test>
+<doc>Excel Application Module Example</doc>
+<status status="FAIL" starttime="20220705 20:21:32.913" endtime="20220705 20:21:32.993"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220705 20:21:32.964" level="WARN">RPA.Excel.Application library works only on Windows platform</msg>
+<msg timestamp="20220705 20:21:32.967" level="WARN">Excel application library requires Windows dependencies to work.</msg>
+</errors>
+</robot>

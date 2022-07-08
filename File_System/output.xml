@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on linux)" generated="20220706 12:27:27.370" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/File_System/tasks.robot">
+<test id="s1-t1" name="Example of RPA FileSystem Library" line="11">
+<kw name="Create A New Log File" library="file-system">
+<arg>${LOG_FILE_PATH}</arg>
+<kw name="Does File Exist" library="RPA.FileSystem">
+<var>${status}</var>
+<arg>${FILE_PATH}</arg>
+<doc>Returns True if the given file exists, False if not.</doc>
+<msg timestamp="20220706 12:27:27.447" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.447" endtime="20220706 12:27:27.458"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Remove File</arg>
+<arg>${FILE_PATH}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220706 12:27:27.458" endtime="20220706 12:27:27.458"/>
+</kw>
+<kw name="Create File" library="RPA.FileSystem">
+<arg>${FILE_PATH}</arg>
+<doc>Creates a new text file, and writes content if any is given.</doc>
+<status status="PASS" starttime="20220706 12:27:27.458" endtime="20220706 12:27:27.459"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.446" endtime="20220706 12:27:27.459"/>
+</kw>
+<kw name="Search Files Info From Directory" library="file-system">
+<arg>/home/gabriel/Documentos/RPA/File_System</arg>
+<arg>.robot</arg>
+<arg>${LOG_FILE_PATH}</arg>
+<kw name="List Files In Directory" library="RPA.FileSystem">
+<var>${file_list}</var>
+<arg>${DIR}</arg>
+<doc>Lists all the files in the given directory, relative to it.</doc>
+<msg timestamp="20220706 12:27:27.461" level="INFO">${file_list} = [File(path='/home/gabriel/Documentos/RPA/File_System/.gitignore', name='.gitignore', size=192, mtime=1656073551.0), File(path='/home/gabriel/Documentos/RPA/File_System/FileLogs.txt', name='FileLogs.tx...</msg>
+<status status="PASS" starttime="20220706 12:27:27.460" endtime="20220706 12:27:27.461"/>
+</kw>
+<for flavor="IN">
+<var>${file}</var>
+<value>@{file_list}</value>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/.gitignore</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.462" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/.gitignore</msg>
+<status status="PASS" starttime="20220706 12:27:27.462" endtime="20220706 12:27:27.462"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.462" level="INFO">${extension} = </msg>
+<status status="PASS" starttime="20220706 12:27:27.462" endtime="20220706 12:27:27.462"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.464" level="FAIL"> != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.463" endtime="20220706 12:27:27.464"/>
+</kw>
+<msg timestamp="20220706 12:27:27.464" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.463" endtime="20220706 12:27:27.464"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.465" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.465" endtime="20220706 12:27:27.465"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.464" endtime="20220706 12:27:27.465"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.461" endtime="20220706 12:27:27.466"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/FileLogs.txt</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.467" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/FileLogs.txt</msg>
+<status status="PASS" starttime="20220706 12:27:27.466" endtime="20220706 12:27:27.467"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.467" level="INFO">${extension} = .txt</msg>
+<status status="PASS" starttime="20220706 12:27:27.467" endtime="20220706 12:27:27.467"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.468" level="FAIL">.txt != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.468" endtime="20220706 12:27:27.468"/>
+</kw>
+<msg timestamp="20220706 12:27:27.468" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.467" endtime="20220706 12:27:27.468"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.469" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.469" endtime="20220706 12:27:27.469"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.469" endtime="20220706 12:27:27.469"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.466" endtime="20220706 12:27:27.470"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/LICENSE</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.470" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/LICENSE</msg>
+<status status="PASS" starttime="20220706 12:27:27.470" endtime="20220706 12:27:27.470"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.471" level="INFO">${extension} = </msg>
+<status status="PASS" starttime="20220706 12:27:27.470" endtime="20220706 12:27:27.471"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.472" level="FAIL"> != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.471" endtime="20220706 12:27:27.472"/>
+</kw>
+<msg timestamp="20220706 12:27:27.472" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.471" endtime="20220706 12:27:27.472"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.473" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.473" endtime="20220706 12:27:27.473"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.473" endtime="20220706 12:27:27.474"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.470" endtime="20220706 12:27:27.474"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/README.md</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.474" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/README.md</msg>
+<status status="PASS" starttime="20220706 12:27:27.474" endtime="20220706 12:27:27.474"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.475" level="INFO">${extension} = .md</msg>
+<status status="PASS" starttime="20220706 12:27:27.474" endtime="20220706 12:27:27.475"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.476" level="FAIL">.md != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.475" endtime="20220706 12:27:27.476"/>
+</kw>
+<msg timestamp="20220706 12:27:27.476" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.475" endtime="20220706 12:27:27.476"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.477" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.477" endtime="20220706 12:27:27.477"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.476" endtime="20220706 12:27:27.477"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.474" endtime="20220706 12:27:27.477"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/conda.yaml</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.479" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/conda.yaml</msg>
+<status status="PASS" starttime="20220706 12:27:27.478" endtime="20220706 12:27:27.479"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.479" level="INFO">${extension} = .yaml</msg>
+<status status="PASS" starttime="20220706 12:27:27.479" endtime="20220706 12:27:27.479"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.481" level="FAIL">.yaml != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.480" endtime="20220706 12:27:27.481"/>
+</kw>
+<msg timestamp="20220706 12:27:27.481" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.480" endtime="20220706 12:27:27.481"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.482" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.482" endtime="20220706 12:27:27.482"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.481" endtime="20220706 12:27:27.483"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.478" endtime="20220706 12:27:27.483"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/output.xml</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.484" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/output.xml</msg>
+<status status="PASS" starttime="20220706 12:27:27.483" endtime="20220706 12:27:27.484"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.484" level="INFO">${extension} = .xml</msg>
+<status status="PASS" starttime="20220706 12:27:27.484" endtime="20220706 12:27:27.484"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.485" level="FAIL">.xml != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.485" endtime="20220706 12:27:27.485"/>
+</kw>
+<msg timestamp="20220706 12:27:27.486" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.484" endtime="20220706 12:27:27.486"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.486" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.486" endtime="20220706 12:27:27.487"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.486" endtime="20220706 12:27:27.487"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.483" endtime="20220706 12:27:27.487"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/robot.yaml</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.488" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/robot.yaml</msg>
+<status status="PASS" starttime="20220706 12:27:27.487" endtime="20220706 12:27:27.488"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.489" level="INFO">${extension} = .yaml</msg>
+<status status="PASS" starttime="20220706 12:27:27.488" endtime="20220706 12:27:27.489"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.490" level="FAIL">.yaml != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.490" endtime="20220706 12:27:27.491"/>
+</kw>
+<msg timestamp="20220706 12:27:27.491" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.489" endtime="20220706 12:27:27.491"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.492" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.492" endtime="20220706 12:27:27.492"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.491" endtime="20220706 12:27:27.492"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.487" endtime="20220706 12:27:27.492"/>
+</iter>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/tasks.robot</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.493" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/tasks.robot</msg>
+<status status="PASS" starttime="20220706 12:27:27.493" endtime="20220706 12:27:27.493"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.494" level="INFO">${extension} = .robot</msg>
+<status status="PASS" starttime="20220706 12:27:27.494" endtime="20220706 12:27:27.494"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220706 12:27:27.494" endtime="20220706 12:27:27.495"/>
+</kw>
+<msg timestamp="20220706 12:27:27.495" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20220706 12:27:27.494" endtime="20220706 12:27:27.495"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Store File Details" library="file-system">
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${FILE_PATH}</var>
+<arg>${FILE}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.496" level="INFO">${FILE_PATH} = /home/gabriel/Documentos/RPA/File_System/tasks.robot</msg>
+<status status="PASS" starttime="20220706 12:27:27.496" endtime="20220706 12:27:27.496"/>
+</kw>
+<kw name="Append To File" library="RPA.FileSystem">
+<arg>${LOG_FILE}</arg>
+<arg>${FILE_PATH}${\n}</arg>
+<doc>Appends text to the given file.</doc>
+<status status="PASS" starttime="20220706 12:27:27.496" endtime="20220706 12:27:27.497"/>
+</kw>
+<kw name="Get File Size" library="RPA.FileSystem">
+<var>${FileSize}</var>
+<arg>${FILE}</arg>
+<doc>Returns the file size in bytes.</doc>
+<msg timestamp="20220706 12:27:27.497" level="INFO">${FileSize} = 387</msg>
+<status status="PASS" starttime="20220706 12:27:27.497" endtime="20220706 12:27:27.498"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${FileSizeStr}</var>
+<arg>${FileSize}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.498" level="INFO">${FileSizeStr} = 387</msg>
+<status status="PASS" starttime="20220706 12:27:27.498" endtime="20220706 12:27:27.498"/>
+</kw>
+<kw name="Append To File" library="RPA.FileSystem">
+<arg>${LOG_FILE}</arg>
+<arg>${FileSizeStr}${\n}</arg>
+<doc>Appends text to the given file.</doc>
+<status status="PASS" starttime="20220706 12:27:27.498" endtime="20220706 12:27:27.499"/>
+</kw>
+<kw name="Read File" library="RPA.FileSystem">
+<var>${FileContent}</var>
+<arg>${FILE}</arg>
+<doc>Reads a file as text, with given `encoding`, and returns the content."</doc>
+<msg timestamp="20220706 12:27:27.499" level="INFO">${FileContent} = *** Settings ***
+Documentation       Template robot main suite.
+Resource            KeywordLibrary/file-system.robot
+
+
+*** Variables ***
+${LOG_FILE_PATH} =  /home/gabriel/Documentos/RPA/File_System/Fi...</msg>
+<status status="PASS" starttime="20220706 12:27:27.499" endtime="20220706 12:27:27.499"/>
+</kw>
+<kw name="Append To File" library="RPA.FileSystem">
+<arg>${LOG_FILE}</arg>
+<arg>${\n}${FileContent}${\n}</arg>
+<doc>Appends text to the given file.</doc>
+<status status="PASS" starttime="20220706 12:27:27.500" endtime="20220706 12:27:27.500"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.495" endtime="20220706 12:27:27.500"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.495" endtime="20220706 12:27:27.500"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.492" endtime="20220706 12:27:27.500"/>
+</iter>
+<status status="PASS" starttime="20220706 12:27:27.461" endtime="20220706 12:27:27.501"/>
+</for>
+<kw name="List Directories In Directory" library="RPA.FileSystem">
+<var>${dir_list}</var>
+<arg>${DIR}</arg>
+<doc>Lists all the directories in the given directory, relative to it.</doc>
+<msg timestamp="20220706 12:27:27.503" level="INFO">${dir_list} = [Directory(path='/home/gabriel/Documentos/RPA/File_System/.vscode', name='.vscode'), Directory(path='/home/gabriel/Documentos/RPA/File_System/KeywordLibrary', name='KeywordLibrary')]</msg>
+<status status="PASS" starttime="20220706 12:27:27.501" endtime="20220706 12:27:27.503"/>
+</kw>
+<for flavor="IN">
+<var>${child_dir}</var>
+<value>@{dir_list}</value>
+<iter>
+<var name="${child_dir}">/home/gabriel/Documentos/RPA/File_System/.vscode</var>
+<kw name="Search Files Info From Directory" library="file-system">
+<arg>${child_dir}</arg>
+<arg>${EXT_TYPE}</arg>
+<arg>${LOG_FILE}</arg>
+<kw name="List Files In Directory" library="RPA.FileSystem">
+<var>${file_list}</var>
+<arg>${DIR}</arg>
+<doc>Lists all the files in the given directory, relative to it.</doc>
+<msg timestamp="20220706 12:27:27.506" level="INFO">${file_list} = [File(path='/home/gabriel/Documentos/RPA/File_System/.vscode/settings.json', name='settings.json', size=112, mtime=1657127417.4753773)]</msg>
+<status status="PASS" starttime="20220706 12:27:27.505" endtime="20220706 12:27:27.506"/>
+</kw>
+<for flavor="IN">
+<var>${file}</var>
+<value>@{file_list}</value>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/.vscode/settings.json</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.507" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/.vscode/settings.json</msg>
+<status status="PASS" starttime="20220706 12:27:27.507" endtime="20220706 12:27:27.507"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.508" level="INFO">${extension} = .json</msg>
+<status status="PASS" starttime="20220706 12:27:27.508" endtime="20220706 12:27:27.508"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220706 12:27:27.510" level="FAIL">.json != .robot</msg>
+<status status="FAIL" starttime="20220706 12:27:27.509" endtime="20220706 12:27:27.510"/>
+</kw>
+<msg timestamp="20220706 12:27:27.510" level="INFO">${status} = False</msg>
+<status status="PASS" starttime="20220706 12:27:27.508" endtime="20220706 12:27:27.510"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File Is Not A Robot File</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220706 12:27:27.511" level="INFO">File Is Not A Robot File</msg>
+<status status="PASS" starttime="20220706 12:27:27.511" endtime="20220706 12:27:27.511"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.510" endtime="20220706 12:27:27.511"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.507" endtime="20220706 12:27:27.511"/>
+</iter>
+<status status="PASS" starttime="20220706 12:27:27.506" endtime="20220706 12:27:27.511"/>
+</for>
+<kw name="List Directories In Directory" library="RPA.FileSystem">
+<var>${dir_list}</var>
+<arg>${DIR}</arg>
+<doc>Lists all the directories in the given directory, relative to it.</doc>
+<msg timestamp="20220706 12:27:27.512" level="INFO">${dir_list} = []</msg>
+<status status="PASS" starttime="20220706 12:27:27.511" endtime="20220706 12:27:27.512"/>
+</kw>
+<for flavor="IN">
+<var>${child_dir}</var>
+<value>@{dir_list}</value>
+<iter>
+<var name="${child_dir}"/>
+<kw name="Search Files Info From Directory" library="file-system">
+<arg>${child_dir}</arg>
+<arg>${EXT_TYPE}</arg>
+<arg>${LOG_FILE}</arg>
+<status status="NOT RUN" starttime="20220706 12:27:27.513" endtime="20220706 12:27:27.513"/>
+</kw>
+<status status="NOT RUN" starttime="20220706 12:27:27.513" endtime="20220706 12:27:27.513"/>
+</iter>
+<status status="NOT RUN" starttime="20220706 12:27:27.512" endtime="20220706 12:27:27.513"/>
+</for>
+<status status="PASS" starttime="20220706 12:27:27.504" endtime="20220706 12:27:27.514"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.504" endtime="20220706 12:27:27.514"/>
+</iter>
+<iter>
+<var name="${child_dir}">/home/gabriel/Documentos/RPA/File_System/KeywordLibrary</var>
+<kw name="Search Files Info From Directory" library="file-system">
+<arg>${child_dir}</arg>
+<arg>${EXT_TYPE}</arg>
+<arg>${LOG_FILE}</arg>
+<kw name="List Files In Directory" library="RPA.FileSystem">
+<var>${file_list}</var>
+<arg>${DIR}</arg>
+<doc>Lists all the files in the given directory, relative to it.</doc>
+<msg timestamp="20220706 12:27:27.516" level="INFO">${file_list} = [File(path='/home/gabriel/Documentos/RPA/File_System/KeywordLibrary/file-system.robot', name='file-system.robot', size=1662, mtime=1657127519.790101)]</msg>
+<status status="PASS" starttime="20220706 12:27:27.515" endtime="20220706 12:27:27.516"/>
+</kw>
+<for flavor="IN">
+<var>${file}</var>
+<value>@{file_list}</value>
+<iter>
+<var name="${file}">/home/gabriel/Documentos/RPA/File_System/KeywordLibrary/file-system.robot</var>
+<kw name="Convert To String" library="BuiltIn">
+<var>${file_path}</var>
+<arg>${file}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.517" level="INFO">${file_path} = /home/gabriel/Documentos/RPA/File_System/KeywordLibrary/file-system.robot</msg>
+<status status="PASS" starttime="20220706 12:27:27.517" endtime="20220706 12:27:27.517"/>
+</kw>
+<kw name="Get File Extension" library="RPA.FileSystem">
+<var>${extension}</var>
+<arg>${file}</arg>
+<doc>Returns the suffix for the file.</doc>
+<msg timestamp="20220706 12:27:27.518" level="INFO">${extension} = .robot</msg>
+<status status="PASS" starttime="20220706 12:27:27.518" endtime="20220706 12:27:27.518"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Should Be Equal</arg>
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${extension}</arg>
+<arg>${EXT_TYPE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220706 12:27:27.519" endtime="20220706 12:27:27.519"/>
+</kw>
+<msg timestamp="20220706 12:27:27.519" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20220706 12:27:27.518" endtime="20220706 12:27:27.519"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status}==True</arg>
+<arg>Store File Details</arg>
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<arg>ELSE</arg>
+<arg>Log</arg>
+<arg>File Is Not A Robot File</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Store File Details" library="file-system">
+<arg>${file}</arg>
+<arg>${LOG_FILE}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${FILE_PATH}</var>
+<arg>${FILE}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.521" level="INFO">${FILE_PATH} = /home/gabriel/Documentos/RPA/File_System/KeywordLibrary/file-system.robot</msg>
+<status status="PASS" starttime="20220706 12:27:27.521" endtime="20220706 12:27:27.521"/>
+</kw>
+<kw name="Append To File" library="RPA.FileSystem">
+<arg>${LOG_FILE}</arg>
+<arg>${FILE_PATH}${\n}</arg>
+<doc>Appends text to the given file.</doc>
+<status status="PASS" starttime="20220706 12:27:27.521" endtime="20220706 12:27:27.522"/>
+</kw>
+<kw name="Get File Size" library="RPA.FileSystem">
+<var>${FileSize}</var>
+<arg>${FILE}</arg>
+<doc>Returns the file size in bytes.</doc>
+<msg timestamp="20220706 12:27:27.523" level="INFO">${FileSize} = 1662</msg>
+<status status="PASS" starttime="20220706 12:27:27.522" endtime="20220706 12:27:27.523"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${FileSizeStr}</var>
+<arg>${FileSize}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220706 12:27:27.523" level="INFO">${FileSizeStr} = 1662</msg>
+<status status="PASS" starttime="20220706 12:27:27.523" endtime="20220706 12:27:27.523"/>
+</kw>
+<kw name="Append To File" library="RPA.FileSystem">
+<arg>${LOG_FILE}</arg>
+<arg>${FileSizeStr}${\n}</arg>
+<doc>Appends text to the given file.</doc>
+<status status="PASS" starttime="20220706 12:27:27.523" endtime="20220706 12:27:27.524"/>
+</kw>
+<kw name="Read File" library="RPA.FileSystem">
+<var>${FileContent}</var>
+<arg>${FILE}</arg>
+<doc>Reads a file as text, with given `encoding`, and returns the content."</doc>
+<msg timestamp="20220706 12:27:27.524" level="INFO">${FileContent} = *** Settings ***
+Library         RPA.FileSystem
+Library         String
+
+# +
+*** Keywords ***
+
+Search Files Info From Directory
+    [Arguments]     ${DIR}      ${EXT_TYPE}    ${LOG_FILE}
+    ${file_lis...</msg>
+<status status="PASS" starttime="20220706 12:27:27.524" endtime="20220706 12:27:27.525"/>
+</kw>
+<kw name="Append To File" library="RPA.FileSystem">
+<arg>${LOG_FILE}</arg>
+<arg>${\n}${FileContent}${\n}</arg>
+<doc>Appends text to the given file.</doc>
+<status status="PASS" starttime="20220706 12:27:27.525" endtime="20220706 12:27:27.525"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.520" endtime="20220706 12:27:27.526"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.519" endtime="20220706 12:27:27.526"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.517" endtime="20220706 12:27:27.526"/>
+</iter>
+<status status="PASS" starttime="20220706 12:27:27.516" endtime="20220706 12:27:27.526"/>
+</for>
+<kw name="List Directories In Directory" library="RPA.FileSystem">
+<var>${dir_list}</var>
+<arg>${DIR}</arg>
+<doc>Lists all the directories in the given directory, relative to it.</doc>
+<msg timestamp="20220706 12:27:27.527" level="INFO">${dir_list} = []</msg>
+<status status="PASS" starttime="20220706 12:27:27.526" endtime="20220706 12:27:27.527"/>
+</kw>
+<for flavor="IN">
+<var>${child_dir}</var>
+<value>@{dir_list}</value>
+<iter>
+<var name="${child_dir}"/>
+<kw name="Search Files Info From Directory" library="file-system">
+<arg>${child_dir}</arg>
+<arg>${EXT_TYPE}</arg>
+<arg>${LOG_FILE}</arg>
+<status status="NOT RUN" starttime="20220706 12:27:27.528" endtime="20220706 12:27:27.528"/>
+</kw>
+<status status="NOT RUN" starttime="20220706 12:27:27.527" endtime="20220706 12:27:27.528"/>
+</iter>
+<status status="NOT RUN" starttime="20220706 12:27:27.527" endtime="20220706 12:27:27.528"/>
+</for>
+<status status="PASS" starttime="20220706 12:27:27.514" endtime="20220706 12:27:27.528"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.514" endtime="20220706 12:27:27.528"/>
+</iter>
+<status status="PASS" starttime="20220706 12:27:27.503" endtime="20220706 12:27:27.528"/>
+</for>
+<status status="PASS" starttime="20220706 12:27:27.459" endtime="20220706 12:27:27.529"/>
+</kw>
+<status status="PASS" starttime="20220706 12:27:27.445" endtime="20220706 12:27:27.529"/>
+</test>
+<doc>Template robot main suite.</doc>
+<status status="PASS" starttime="20220706 12:27:27.375" endtime="20220706 12:27:27.530"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

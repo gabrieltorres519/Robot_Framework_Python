@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on linux)" generated="20220707 18:42:20.217" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/home/gabriel/Documentos/RPA/RPA_Email_ImapSMTP (copia)/tasks.robot">
+<test id="s1-t1" name="Example of Email Library Use Cases" line="20">
+<kw name="Send Html Email With Image" library="RPA_Email">
+<arg>${recipient_email}</arg>
+<arg>${mail_subject}</arg>
+<arg>${email_html_body}</arg>
+<arg>${image}</arg>
+<status status="PASS" starttime="20220707 18:42:20.877" endtime="20220707 18:42:22.359"/>
+</kw>
+<status status="PASS" starttime="20220707 18:42:20.873" endtime="20220707 18:42:22.362"/>
+</test>
+<doc>RPA GMAIL Related Keywords Example</doc>
+<status status="PASS" starttime="20220707 18:42:20.222" endtime="20220707 18:42:22.365"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
